@@ -22,6 +22,7 @@ class _MainState extends State<Main> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(),
       title: "Restaurant",
       home: FutureBuilder<bool>(
         future: load(),
