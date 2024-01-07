@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: StatefulBuilder(
+      drawer: StatefulBuilder(
         key: _bottomNavKey,
         builder: (BuildContext context, void Function(void Function()) _) {
           return GNav(
