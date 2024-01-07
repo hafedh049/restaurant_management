@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_management/utils/callbacks.dart';
+import 'package:restaurant_management/views/loading.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 void main() {
