@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_management/utils/callbacks.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  setPathUrlStrategy();
+  ErrorWidget.builder = (FlutterErrorDetails details) => Error(error: details.exception.toString());
   runApp(const Main());
 }
 

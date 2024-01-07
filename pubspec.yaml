@@ -36,3 +36,6 @@ flutter:
 
   assets:
     - assets/
+    - assets/jsons/
+    - assets/lotties/
+    - assets/pictures/
