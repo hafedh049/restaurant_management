@@ -12,11 +12,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final List<Map<String, dynamic>> _pages = <Map<String, dynamic>>[
-    <String, dynamic>{"title": "Notifications", "icon": Bootstrap.house, "page": Container()},
-    <String, dynamic>{"title": "Category", "icon": Bootstrap.house, "page": Container()},
+    <String, dynamic>{"title": "Notifications", "icon": Bootstrap.bell, "page": Container()},
+    <String, dynamic>{"title": "Category", "icon": Bootstrap.circle, "page": Container()},
     <String, dynamic>{"title": "Home", "icon": Bootstrap.house, "page": Container()},
-    <String, dynamic>{"title": "Orders", "icon": Bootstrap.house, "page": Container()},
-    <String, dynamic>{"title": "Cart", "icon": Bootstrap.house, "page": Container()},
+    <String, dynamic>{"title": "Orders", "icon": Bootstrap.list_task, "page": Container()},
+    <String, dynamic>{"title": "Cart", "icon": Bootstrap.cart, "page": Container()},
   ];
 
   final PageController _pagesController = PageController();
@@ -49,25 +49,8 @@ class _HomeState extends State<Home> {
             activeColor: Colors.purple,
             iconSize: 24,
             tabBackgroundColor: Colors.purple.withOpacity(0.1),
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            tabs: <GButton>[
-              GButton(
-                icon: LineIcons.home,
-                text: 'Home',
-              ),
-              GButton(
-                icon: LineIcons.heart_o,
-                text: 'Likes',
-              ),
-              GButton(
-                icon: LineIcons.search,
-                text: 'Search',
-              ),
-              GButton(
-                icon: LineIcons.user,
-                text: 'Profile',
-              )
-            ],
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            tabs: <GButton>[for (final Map<String, dynamic> page in _pages) GButton(icon: page["icon"], text: page["title"])],
           );
         },
       ),
