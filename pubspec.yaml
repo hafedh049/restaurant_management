@@ -11,6 +11,15 @@ dependencies:
   flutter:
     sdk: flutter
 
+  badges: ^3.1.2
+  firebase_core: ^2.24.2
+  firebase_messaging: ^14.7.10
+  flutter_animate: ^4.3.0
+  hive: ^2.2.3
+  lottie: ^2.7.0
+  firebase_auth: ^4.16.0
+  http: ^1.1.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
