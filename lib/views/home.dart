@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       bottomNavigationBar: StatefulBuilder(
         key: _bottomNavKey,
-        builder: (context, snapshot) {
+        builder: (BuildContext context, void Function(void Function()) _) {
           return GNav(
             rippleColor: Colors.grey.shade800,
             hoverColor: Colors.grey.shade700,
