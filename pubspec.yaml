@@ -25,6 +25,7 @@ dependencies:
   url_strategy: ^0.2.0
   url_launcher: ^6.2.2
   icons_plus: ^5.0.0
+  sidebarx: ^0.16.3
 
 dev_dependencies:
   flutter_test:
