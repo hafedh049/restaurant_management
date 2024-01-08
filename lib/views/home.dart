@@ -42,8 +42,8 @@ class _HomeState extends State<Home> {
             key: _bottomNavKey,
             builder: (BuildContext context, void Function(void Function()) _) {
               return SizedBox(
-                width: 100,
-                child: SidebarX(
+                width: 200,
+                child: SidebarX(extendedTheme: SidebarXTheme(),
                   controller: _sidebarXController,
                   items: <SidebarXItem>[
                     for (final Map<String, dynamic> page in _pages)
