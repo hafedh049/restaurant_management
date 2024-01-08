@@ -35,31 +35,24 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: StatefulBuilder(
-        key: _bottomNavKey,
-        builder: (BuildContext context, void Function(void Function()) _) {
-          return GNav(
-            rippleColor: Colors.grey.shade800,
-            hoverColor: Colors.grey.shade700,
-            haptic: true,
-            tabBorderRadius: 15,
-            tabActiveBorder: Border.all(color: Colors.black, width: 1),
-            tabBorder: Border.all(color: Colors.grey, width: 1),
-            curve: Curves.easeOutExpo,
-            duration: 900.ms,
-            gap: 8,
-            color: Colors.grey.shade800,
-            activeColor: Colors.purple,
-            iconSize: 24,
-            tabBackgroundColor: Colors.purple.withOpacity(0.1),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            tabs: <GButton>[for (final Map<String, dynamic> page in _pages) GButton(icon: page["icon"], text: page["title"])],
-          );
-        },
-      ),
       body: Row(
         children: <Widget>[
-          SidebarX(controller: controller),
+          StatefulBuilder(
+            key: _bottomNavKey,
+            builder: (BuildContext context, void Function(void Function()) _) {
+              return SidebarX(
+                controller: _sidebarXController,
+                items: <SidebarXItem>[
+                  for (final Map<String, dynamic> page in _pages)
+                    SidebarXItem(
+                      icon: page["icon"],
+                      label: page["title"],
+                      onTap: () => _pagesController.jumpToPage(_pages.indexOf(page)),
+                    ),
+                ],
+              );
+            },
+          ),
           Expanded(
             child: PageView.builder(
               itemCount: _pages.length,
