@@ -18,6 +18,7 @@ class _HomeState extends State<Home> {
     <String, dynamic>{"title": "Home", "icon": Bootstrap.house, "page": Container()},
     <String, dynamic>{"title": "Orders", "icon": Bootstrap.list_task, "page": Container()},
     <String, dynamic>{"title": "Cart", "icon": Bootstrap.cart, "page": Container()},
+    <String, dynamic>{"title": "Settings", "icon": Icons.settings, "page": Container()},
   ];
 
   final PageController _pagesController = PageController();
@@ -40,16 +41,19 @@ class _HomeState extends State<Home> {
           StatefulBuilder(
             key: _bottomNavKey,
             builder: (BuildContext context, void Function(void Function()) _) {
-              return SidebarX(
-                controller: _sidebarXController,
-                items: <SidebarXItem>[
-                  for (final Map<String, dynamic> page in _pages)
-                    SidebarXItem(
-                      icon: page["icon"],
-                      label: page["title"],
-                      onTap: () => _pagesController.jumpToPage(_pages.indexOf(page)),
-                    ),
-                ],
+              return SizedBox(
+                width: 100,
+                child: SidebarX(
+                  controller: _sidebarXController,
+                  items: <SidebarXItem>[
+                    for (final Map<String, dynamic> page in _pages)
+                      SidebarXItem(
+                        icon: page["icon"],
+                        label: page["title"],
+                        onTap: () => _pagesController.jumpToPage(_pages.indexOf(page)),
+                      ),
+                  ],
+                ),
               );
             },
           ),
