@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:sidebarx/sidebarx.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -54,10 +55,17 @@ class _HomeState extends State<Home> {
           );
         },
       ),
-      body: PageView.builder(
-        itemCount: _pages.length,
-        itemBuilder: (BuildContext context, int index) => _pages[index]["page"],
-        controller: _pagesController,
+      body: Row(
+        children: <Widget>[
+          SidebarX(controller: controller),
+          Expanded(
+            child: PageView.builder(
+              itemCount: _pages.length,
+              itemBuilder: (BuildContext context, int index) => _pages[index]["page"],
+              controller: _pagesController,
+            ),
+          ),
+        ],
       ),
     );
   }
