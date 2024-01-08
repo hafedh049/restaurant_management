@@ -22,6 +22,8 @@ class _HomeState extends State<Home> {
 
   final PageController _pagesController = PageController();
 
+  final SidebarXController _sidebarXController = SidebarXController(selectedIndex: 2);
+
   final GlobalKey<State> _bottomNavKey = GlobalKey<State>();
 
   @override
