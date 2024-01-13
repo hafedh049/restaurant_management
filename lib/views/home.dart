@@ -47,11 +47,12 @@ class _HomeState extends State<Home> {
         iconSize: 24,
         tabBackgroundColor: Colors.purple.withOpacity(0.1),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        tabs: <GButton>[
-          GButton(icon: LineIcons.home, text: 'Home'),
-          GButton(icon: LineIcons.heart_o, text: 'Likes'),
-          GButton(icon: LineIcons.search, text: 'Search'),
-          GButton(icon: LineIcons.user, text: 'Profile'),
+        tabs: const <GButton>[
+          GButton(icon: Bootstrap.bell, text: 'Notifications'),
+          GButton(icon: FontAwesome.shapes_solid, text: 'Category'),
+          GButton(icon: Bootstrap.house, text: 'Home'),
+          GButton(icon: Bootstrap.bag, text: 'Orders'),
+          GButton(icon: Bootstrap.cart, text: 'Cart'),
         ],
       ),
       body: PageView.builder(

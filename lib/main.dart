@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:restaurant_management/utils/callbacks.dart';
 import 'package:restaurant_management/utils/globals.dart';
@@ -23,15 +25,21 @@ class Main extends StatefulWidget {
 class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<bool>(
-      future: load(),
-      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-        return snapshot.hasData
-            ? MaterialApp(debugShowCheckedModeBanner: false, title: settings["app_name"], home: const Home())
-            : snapshot.connectionState == ConnectionState.waiting
-                ? const MaterialApp(debugShowCheckedModeBanner: false, title: "Restaurant", home: Loading())
-                : MaterialApp(debugShowCheckedModeBanner: false, title: "Restaurant", home: Error(error: snapshot.error.toString()));
-      },
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      onGenerateTitle: (BuildContext context) => settings["app_name"] ?? "Talabat Plus",
+      home: FutureBuilder<bool>(
+        future: load(),
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          if (snapshot.hasData) {
+            return const Home();
+          } else if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Loading();
+          } else {
+            return Error(error: snapshot.error.toString());
+          }
+        },
+      ),
     );
   }
 }
