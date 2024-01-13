@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:restaurant_management/utils/callbacks.dart';
 import 'package:restaurant_management/utils/globals.dart';

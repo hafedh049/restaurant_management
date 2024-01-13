@@ -7,15 +7,17 @@ class Error extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          LottieBuilder.asset("assets/lotties/error.json"),
-          const SizedBox(height: 20),
-          Text(error),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(child: LottieBuilder.asset("assets/lotties/error.json")),
+            const SizedBox(height: 20),
+            Text(error),
+          ],
+        ),
       ),
     );
   }

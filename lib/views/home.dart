@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:restaurant_management/utils/callbacks.dart';
+import 'package:restaurant_management/utils/globals.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -38,14 +39,16 @@ class _HomeState extends State<Home> {
               for (final Map<String, dynamic> item in _pages)
                 Expanded(
                   child: GestureDetector(
-                    onTap: () => _,
+                    onTap: () => _(() => selectedPage = item["title"]),
                     child: AnimatedContainer(
                       duration: 500.ms,
                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[],
+                        children: <Widget>[
+                          Icon(item["icon"], size: 15, color: selectedPage == item["title"] ? hexToColor(settings["accent_color"]) : hexToColor(settings["accent_color"])),
+                        ],
                       ),
                     ),
                   ),

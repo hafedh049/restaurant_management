@@ -7,6 +7,22 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart';
 import 'package:restaurant_management/utils/globals.dart';
 
+Color hexToColor(String hexColor) {
+  // Remove the '#' character if present
+  hexColor = hexColor.replaceAll("#", "");
+
+  // Parse the hex color string to get individual color components
+  final int hexValue = int.parse(hexColor, radix: 16);
+  // Extract the alpha, red, green, and blue components
+  final int alpha = (hexValue >> 24) & 0xFF;
+  final int red = (hexValue >> 16) & 0xFF;
+  final int green = (hexValue >> 8) & 0xFF;
+  final int blue = hexValue & 0xFF;
+
+  // Create and return the Color object
+  return Color.fromARGB(alpha, red, green, blue);
+}
+
 Future<bool> load() async {
   try {
     Hive.init(null);
@@ -19,7 +35,7 @@ Future<bool> load() async {
     //Load Colors
     Response request = await get(Uri.parse("https://talabatplus.net/api/settings?business_id=${configurations['business_id']}"));
     settings = json.decode(request.body);
-    debugPrint(settings.toString());
+    debugPrint(settings["accent_color"]);
     //Initialize Firebase
     await Firebase.initializeApp(
       options: const FirebaseOptions(
