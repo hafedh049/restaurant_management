@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:sidebarx/sidebarx.dart';
 
@@ -43,7 +41,8 @@ class _HomeState extends State<Home> {
             builder: (BuildContext context, void Function(void Function()) _) {
               return SizedBox(
                 width: 200,
-                child: SidebarX(extendedTheme: SidebarXTheme(),
+                child: SidebarX(
+                  extendedTheme: SidebarXTheme(),
                   controller: _sidebarXController,
                   items: <SidebarXItem>[
                     for (final Map<String, dynamic> page in _pages)
