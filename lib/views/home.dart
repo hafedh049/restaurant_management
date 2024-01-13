@@ -31,29 +31,28 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: GNav(
-        rippleColor: Colors.grey.shade800,
-        hoverColor: Colors.grey.shade800,
-        haptic: true,
-        tabBorderRadius: 15,
-        tabActiveBorder: Border.all(color: Colors.black, width: 1),
-        tabBorder: Border.all(color: Colors.grey, width: 1),
-        tabShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)],
-        curve: Curves.easeOutExpo,
-        duration: 500.ms,
-        gap: 8,
-        color: Colors.grey.shade800,
-        activeColor: Colors.purple,
-        iconSize: 24,
-        tabBackgroundColor: Colors.purple.withOpacity(0.1),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        tabs: const <GButton>[
-          GButton(icon: Bootstrap.bell, text: 'Notifications'),
-          GButton(icon: FontAwesome.shapes_solid, text: 'Category'),
-          GButton(icon: Bootstrap.house, text: 'Home'),
-          GButton(icon: Bootstrap.bag, text: 'Orders'),
-          GButton(icon: Bootstrap.cart, text: 'Cart'),
-        ],
+      bottomNavigationBar: StatefulBuilder(
+        builder: (BuildContext context, void Function(void Function()) _) {
+          return Row(
+            children: <Widget>[
+              for (final Map<String, dynamic> item in _pages)
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => _,
+                    child: AnimatedContainer(
+                      duration: 500.ms,
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[],
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          );
+        },
       ),
       body: PageView.builder(
         itemCount: _pages.length,
