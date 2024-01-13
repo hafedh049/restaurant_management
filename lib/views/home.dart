@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:sidebarx/sidebarx.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -21,10 +20,6 @@ class _HomeState extends State<Home> {
 
   final PageController _pagesController = PageController();
 
-  final SidebarXController _sidebarXController = SidebarXController(selectedIndex: 2);
-
-  final GlobalKey<State> _bottomNavKey = GlobalKey<State>();
-
   @override
   void dispose() {
     _pagesController.dispose();
@@ -34,36 +29,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        children: <Widget>[
-          StatefulBuilder(
-            key: _bottomNavKey,
-            builder: (BuildContext context, void Function(void Function()) _) {
-              return SizedBox(
-                width: 200,
-                child: SidebarX(
-                  extendedTheme: SidebarXTheme(),
-                  controller: _sidebarXController,
-                  items: <SidebarXItem>[
-                    for (final Map<String, dynamic> page in _pages)
-                      SidebarXItem(
-                        icon: page["icon"],
-                        label: page["title"],
-                        onTap: () => _pagesController.jumpToPage(_pages.indexOf(page)),
-                      ),
-                  ],
-                ),
-              );
-            },
-          ),
-          Expanded(
-            child: PageView.builder(
-              itemCount: _pages.length,
-              itemBuilder: (BuildContext context, int index) => _pages[index]["page"],
-              controller: _pagesController,
-            ),
-          ),
-        ],
+      body: PageView.builder(
+        itemCount: _pages.length,
+        itemBuilder: (BuildContext context, int index) => _pages[index]["page"],
+        controller: _pagesController,
       ),
     );
   }
