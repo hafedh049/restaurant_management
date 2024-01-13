@@ -34,8 +34,8 @@ Future<bool> load() async {
     configurations = json.decode(await rootBundle.loadString("assets/configurations/configuration.json"));
     //Load Colors
     Response request = await get(Uri.parse("https://talabatplus.net/api/settings?business_id=${configurations['business_id']}"));
-    settings = json.decode(request.body);
-    debugPrint(settings["accent_color"]);
+    settings = json.decode(request.body)["data"];
+    debugPrint(settings["second_color"]);
     //Initialize Firebase
     await Firebase.initializeApp(
       options: const FirebaseOptions(
