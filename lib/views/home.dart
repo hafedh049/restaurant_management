@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
         builder: (BuildContext context, void Function(void Function()) _) {
           return Container(
             padding: const EdgeInsets.all(8),
-            color: hexToColor("#000000"),
+            color: hexToColor(settings["main_color"]),
             child: Row(
               children: <Widget>[
                 for (final Map<String, dynamic> item in _pages)

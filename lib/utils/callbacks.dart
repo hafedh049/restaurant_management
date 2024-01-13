@@ -8,11 +8,11 @@ import 'package:http/http.dart';
 import 'package:restaurant_management/utils/globals.dart';
 
 Color hexToColor(String hexColor) {
+  print(hexColor);
   final List<String> color = hexColor.replaceAll("#", "").split("");
   final int red = int.parse(color.sublist(0, 2).join(), radix: 16);
   final int blue = int.parse(color.sublist(2, 4).join(), radix: 16);
   final int green = int.parse(color.sublist(4).join(), radix: 16);
-  print([red, green, blue]);
   return Color.fromARGB(255, red, green, blue);
 }
 
