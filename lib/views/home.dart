@@ -34,29 +34,33 @@ class _HomeState extends State<Home> {
     return Scaffold(
       bottomNavigationBar: StatefulBuilder(
         builder: (BuildContext context, void Function(void Function()) _) {
-          return Row(
-            children: <Widget>[
-              for (final Map<String, dynamic> item in _pages)
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () => _(() => selectedPage = item["title"]),
-                    child: AnimatedContainer(
-                      duration: 500.ms,
-                      decoration: BoxDecoration(color: hexToColor(settings["accent_color"]).withOpacity(.6), borderRadius: BorderRadius.circular(5)),
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(item["icon"], size: 15, color: selectedPage == item["title"] ? hexToColor(settings["accent_color"]) : hexToColor(settings["accent_color"])),
-                          const SizedBox(height: 10),
-                          Text(item["title"], style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: hexToColor(settings["accent_color"]))),
-                        ],
+          return Container(
+            padding: const EdgeInsets.all(8),
+            color: hexToColor(settings["scaffold_color"]),
+            child: Row(
+              children: <Widget>[
+                for (final Map<String, dynamic> item in _pages)
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () => _(() => selectedPage = item["title"]),
+                      child: AnimatedContainer(
+                        duration: 500.ms,
+                        decoration: BoxDecoration(color: hexToColor(settings["accent_color"]).withOpacity(.6), borderRadius: BorderRadius.circular(5)),
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(item["icon"], size: 15, color: selectedPage == item["title"] ? hexToColor(settings["accent_color"]) : hexToColor(settings["accent_color"])),
+                            const SizedBox(height: 10),
+                            Text(item["title"], style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: hexToColor(settings["accent_color"]))),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-            ],
+              ],
+            ),
           );
         },
       ),

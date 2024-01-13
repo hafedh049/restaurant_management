@@ -9,18 +9,10 @@ import 'package:restaurant_management/utils/globals.dart';
 
 Color hexToColor(String hexColor) {
   // Remove the '#' character if present
-  hexColor = hexColor.replaceAll("#", "");
+  hexColor = hexColor.replaceAll("#", "0xff");
 
-  // Parse the hex color string to get individual color components
-  final int hexValue = int.parse(hexColor, radix: 16);
-  // Extract the alpha, red, green, and blue components
-  final int alpha = (hexValue >> 24) & 0xFF;
-  final int red = (hexValue >> 16) & 0xFF;
-  final int green = (hexValue >> 8) & 0xFF;
-  final int blue = hexValue & 0xFF;
-
-  // Create and return the Color object
-  return Color.fromARGB(alpha, red, green, blue);
+  // Parse the hex color string and create the Color object
+  return Color(int.parse(hexColor, radix: 16)).withAlpha(255);
 }
 
 Future<bool> load() async {
