@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_management/utils/callbacks.dart';
+import 'package:restaurant_management/utils/globals.dart';
 import 'package:restaurant_management/views/home.dart';
 import 'package:restaurant_management/views/loading.dart';
 import 'package:restaurant_management/views/error.dart';
@@ -22,22 +23,15 @@ class Main extends StatefulWidget {
 class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      title: "Restaurant",
-      home: FutureBuilder<bool>(
-        future: load(),
-        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-          if (snapshot.hasData) {
-            return const Home();
-          } else if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Loading();
-          } else {
-            return Error(error: snapshot.error.toString());
-          }
-        },
-      ),
+    return FutureBuilder<bool>(
+      future: load(),
+      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+        return snapshot.hasData
+            ? MaterialApp(debugShowCheckedModeBanner: false, title: settings["app_name"], home: const Home())
+            : snapshot.connectionState == ConnectionState.waiting
+                ? const MaterialApp(debugShowCheckedModeBanner: false, title: "Restaurant", home: Loading())
+                : MaterialApp(debugShowCheckedModeBanner: false, title: "Restaurant", home: Error(error: snapshot.error.toString()));
+      },
     );
   }
 }

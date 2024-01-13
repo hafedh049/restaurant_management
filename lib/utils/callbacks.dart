@@ -34,7 +34,6 @@ Future<bool> load() async {
     );
     return true;
   } catch (e) {
-    debugPrint("**");
     debugPrint(e.toString());
     return false;
   }
