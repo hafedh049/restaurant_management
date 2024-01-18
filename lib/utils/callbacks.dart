@@ -8,7 +8,6 @@ import 'package:http/http.dart';
 import 'package:restaurant_management/utils/globals.dart';
 
 Color hexToColor(String hexColor) {
-  print(hexColor);
   final List<String> color = hexColor.replaceAll("#", "").split("");
   final int red = int.parse(color.sublist(0, 2).join(), radix: 16);
   final int blue = int.parse(color.sublist(2, 4).join(), radix: 16);
@@ -28,6 +27,12 @@ Future<bool> load() async {
     //Load Colors
     Response request = await get(Uri.parse("https://talabatplus.net/api/settings?business_id=${configurations['business_id']}"));
     settings = json.decode(request.body)["data"];
+    for (final MapEntry<String, dynamic> entry in settings.entries) {
+      if (entry.key.contains("color")) {
+        settings[entry.key] = hexToColor(entry.value);
+      }
+    }
+    print(settings);
     //Initialize Firebase
     await Firebase.initializeApp(
       options: const FirebaseOptions(

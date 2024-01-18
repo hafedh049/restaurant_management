@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
         builder: (BuildContext context, void Function(void Function()) _) {
           return Container(
             padding: const EdgeInsets.all(8),
-            color: hexToColor(settings["main_color"]),
+            color: settings["main_color"],
             child: Row(
               children: <Widget>[
                 for (final Map<String, dynamic> item in _pages)
@@ -45,15 +45,14 @@ class _HomeState extends State<Home> {
                       onTap: () => _(() => selectedPage = item["title"]),
                       child: AnimatedContainer(
                         duration: 500.ms,
-                        decoration: BoxDecoration(color: hexToColor(settings["accent_color"]).withOpacity(.6), borderRadius: BorderRadius.circular(5)),
+                        decoration: BoxDecoration(color: settings["accent_color"].withOpacity(.6), borderRadius: BorderRadius.circular(5)),
                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            Icon(item["icon"], size: 15, color: selectedPage == item["title"] ? hexToColor(settings["accent_color"]) : hexToColor(settings["accent_color"])),
+                            Icon(item["icon"], size: 15, color: selectedPage == item["title"] ? settings["main_dark_color"] : settings["main_dark_color"]),
                             const SizedBox(height: 10),
-                            Text(item["title"], style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: hexToColor(settings["accent_color"]))),
+                            Text(item["title"], style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: settings["main_dark_color"])),
                           ],
                         ),
                       ),
