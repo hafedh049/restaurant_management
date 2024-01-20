@@ -92,10 +92,18 @@ class _HomeState extends State<Home> {
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Row(
                           children: <Widget>[
-                            Spacer(),
+                            const Text("Serving delicious meals", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                            const Spacer(),
+                            Container(
+                              padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+                              decoration: const BoxDecoration(color: brown, borderRadius: BorderRadius.only(topRight: Radius.circular(15), topLeft: Radius.circular(15))),
+                              child: const Icon(FontAwesome.circle_chevron_right_solid, size: 15),
+                            ),
                           ],
                         ),
                       ),
+                      const SizedBox(height: 10),
+                      const Text("✭", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ),
