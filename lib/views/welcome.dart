@@ -35,11 +35,13 @@ class _WelcomeState extends State<Welcome> {
               ),
               const SizedBox(height: 30),
               GestureDetector(
-                onTap: _enablePermission,
+                onTap: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const Holder()));
+                },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  decoration: BoxDecoration(color: null, borderRadius: BorderRadius.circular(15)),
-                  child: Text("OK", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: settings["main_color"])),
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                  decoration: BoxDecoration(color: brown, borderRadius: BorderRadius.circular(15)),
+                  child: const Text("OK", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: white)),
                 ),
               ),
             ],

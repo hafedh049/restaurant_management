@@ -191,28 +191,31 @@ class _HomeState extends State<Home> {
             ],
           ),
           const SizedBox(height: 30),
-          SizedBox(
-            height: 150,
-            child: GridView.builder(
-              //shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) => Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  //mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    const Spacer(),
-                    const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-                    const SizedBox(height: 10),
-                    Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
-                  ],
+          Wrap(
+            alignment: WrapAlignment.start,
+            crossAxisAlignment: WrapCrossAlignment.start,
+            runAlignment: WrapAlignment.start,
+            runSpacing: 20,
+            spacing: 20,
+            children: <Widget>[
+              for (int index = 0; index < 20; index += 1)
+                Container(
+                  height: 300,
+                  width: (MediaQuery.sizeOf(context).width - 48) / 2,
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      const Spacer(),
+                      const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: white)),
+                      const SizedBox(height: 10),
+                      Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
+                    ],
+                  ),
                 ),
-              ),
-              itemCount: 20,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
-            ),
+            ],
           ),
         ],
       ),
