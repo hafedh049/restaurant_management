@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 
@@ -58,6 +60,8 @@ class _HomeState extends State<Home> {
             const SizedBox(height: 30),
             Row(
               children: <Widget>[
+                const Icon(FontAwesome.shapes_solid, size: 15),
+                const SizedBox(width: 30),
                 const Text("Top Stores", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
                 const Spacer(),
                 InkWell(onTap: () {}, child: const Text("View all", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
@@ -66,9 +70,10 @@ class _HomeState extends State<Home> {
             const SizedBox(height: 30),
             SizedBox(
               height: 200,
-              width: 250,
               child: ListView.separated(
+                scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) => Container(
+                  width: 250,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
                   child: Column(
@@ -103,14 +108,71 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      const Text("✭", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
                     ],
                   ),
                 ),
                 separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 20),
                 itemCount: 20,
               ),
-            )
+            ),
+            const SizedBox(height: 30),
+            const Row(
+              children: <Widget>[
+                Icon(FontAwesome.shapes_solid, size: 15),
+                SizedBox(width: 30),
+                Text("Product Categories", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+              ],
+            ),
+            const SizedBox(height: 30),
+            SizedBox(
+              height: 150,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (BuildContext context, int index) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      width: 80,
+                      height: 80,
+                      decoration: BoxDecoration(shape: BoxShape.circle, borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text("Appetizers", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
+                  ],
+                ),
+                separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 20),
+                itemCount: 20,
+              ),
+            ),
+            const SizedBox(height: 30),
+            const Row(
+              children: <Widget>[
+                Icon(FontAwesome.shapes_solid, size: 15),
+                SizedBox(width: 30),
+                Text("Store Categories", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+              ],
+            ),
+            const SizedBox(height: 30),
+            SizedBox(
+              height: 150,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (BuildContext context, int index) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text("Appetizers", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
+                  ],
+                ),
+                separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 20),
+                itemCount: 20,
+              ),
+            ),
           ],
         ),
       ),
