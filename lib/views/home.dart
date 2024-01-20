@@ -160,17 +160,64 @@ class _HomeState extends State<Home> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
                     ),
                     const SizedBox(height: 10),
-                    const Text("Appetizers", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
+                    const Text("Food", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
                   ],
                 ),
                 separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 20),
                 itemCount: 20,
+              ),
+            ),
+            const SizedBox(height: 30),
+            Row(
+              children: <Widget>[
+                const Icon(FontAwesome.shapes_solid, size: 15),
+                const SizedBox(width: 30),
+                const Text("Most Popular", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                const Spacer(),
+                InkWell(onTap: () {}, child: const Text("View all", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
+              ],
+            ),
+            const SizedBox(height: 30),
+            SizedBox(
+              height: 150,
+              child: GridView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (BuildContext context, int index) => Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      const Spacer(),
+                      const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: <Widget>[
+                          const Text("Serving delicious meals", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                          const Spacer(),
+                          Container(
+                            padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+                            decoration: const BoxDecoration(color: brown, borderRadius: BorderRadius.only(topRight: Radius.circular(15), topLeft: Radius.circular(15))),
+                            child: const Icon(FontAwesome.circle_chevron_right_solid, size: 15),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
+                    ],
+                  ),
+                ),
+                itemCount: 20,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               ),
             ),
           ],
