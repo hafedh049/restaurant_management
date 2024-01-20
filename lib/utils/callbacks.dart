@@ -53,7 +53,7 @@ Future<bool> load() async {
 
 List<List<int>> spread(int n) {
   final List<List<int>> result = <List<int>>[];
-  if (n.isOdd) {
+  if (n.isEven) {
     for (int index = 0; index < n; index += 2) {
       result.add(<int>[index, index + 1]);
     }
