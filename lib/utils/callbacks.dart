@@ -32,7 +32,6 @@ Future<bool> load() async {
         settings[entry.key] = hexToColor(entry.value);
       }
     }
-    print(settings);
     //Initialize Firebase
     await Firebase.initializeApp(
       options: const FirebaseOptions(
