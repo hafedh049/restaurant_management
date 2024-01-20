@@ -80,16 +80,16 @@ class _HomeState extends State<Home> {
                     Container(
                       padding: const EdgeInsets.all(8),
                       decoration: const BoxDecoration(color: green, borderRadius: BorderRadius.only(topRight: Radius.circular(15), topLeft: Radius.circular(15))),
-                      child: const Text("Open", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                      child: const Text("Open", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                     ),
                     const SizedBox(height: 10),
                     Container(
                       padding: const EdgeInsets.all(8),
                       decoration: const BoxDecoration(color: orange, borderRadius: BorderRadius.only(topRight: Radius.circular(15), topLeft: Radius.circular(15))),
-                      child: const Text("Pick-up", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                      child: const Text("Pick-up", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                     ),
                     const Spacer(),
-                    const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                    const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: white)),
                     const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -137,7 +137,7 @@ class _HomeState extends State<Home> {
                     decoration: const BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
                   ),
                   const SizedBox(height: 10),
-                  const Text("Appetizers", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
+                  const Text("Appetizers", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: black)),
                 ],
               ),
               separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 20),
@@ -167,7 +167,7 @@ class _HomeState extends State<Home> {
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
                   ),
                   const SizedBox(height: 10),
-                  const Text("Food", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
+                  const Text("Food", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: black)),
                 ],
               ),
               separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 20),
@@ -192,6 +192,7 @@ class _HomeState extends State<Home> {
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) => Container(
                 padding: const EdgeInsets.all(16),
+                margin: const EdgeInsets.all(16),
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
