@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_management/utils/callbacks.dart';
 import 'package:restaurant_management/utils/globals.dart';
-import 'package:restaurant_management/views/home.dart';
 import 'package:restaurant_management/views/loading.dart';
 import 'package:restaurant_management/views/error.dart';
+import 'package:restaurant_management/views/welcome.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 void main() {
@@ -30,7 +30,7 @@ class _MainState extends State<Main> {
         future: load(),
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
           if (snapshot.hasData) {
-            return const Home();
+            return const Welcome();
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return const Loading();
           } else {

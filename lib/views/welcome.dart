@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_management/views/holder.dart';
 
 import '../utils/globals.dart';
 
@@ -10,6 +11,10 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
+  void _enablePermission() async {
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const Holder()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,10 +28,13 @@ class _WelcomeState extends State<Welcome> {
               const SizedBox(height: 30),
               Flexible(child: Text("We request you to grant us location permission for better user experience. This way we can filter out nearby deliverable stores for you.", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: settings["main_color"]))),
               const SizedBox(height: 30),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                decoration: BoxDecoration(color: null, borderRadius: BorderRadius.circular(15)),
-                child: Text("OK", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: settings["main_color"])),
+              GestureDetector(
+                onTap: _enablePermission,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  decoration: BoxDecoration(color: null, borderRadius: BorderRadius.circular(15)),
+                  child: Text("OK", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: settings["main_color"])),
+                ),
               ),
             ],
           ),
