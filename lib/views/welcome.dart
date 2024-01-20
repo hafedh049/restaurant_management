@@ -26,7 +26,13 @@ class _WelcomeState extends State<Welcome> {
             children: <Widget>[
               Text("Welcome", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500, color: settings["main_color"])),
               const SizedBox(height: 30),
-              Flexible(child: Text("We request you to grant us location permission for better user experience. This way we can filter out nearby deliverable stores for you.", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: settings["main_color"]))),
+              Flexible(
+                child: Text(
+                  "We request you to grant us location permission for better user experience. This way we can filter out nearby deliverable stores for you.",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: settings["main_color"]),
+                  textAlign: TextAlign.center,
+                ),
+              ),
               const SizedBox(height: 30),
               GestureDetector(
                 onTap: _enablePermission,

@@ -67,11 +67,11 @@ class _HomeState extends State<Home> {
           ),
           const SizedBox(height: 30),
           SizedBox(
-            height: 200,
+            height: 250,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) => Container(
-                width: 250,
+                width: 300,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
                 child: Column(
@@ -89,24 +89,30 @@ class _HomeState extends State<Home> {
                       child: const Text("Pick-up", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                     ),
                     const Spacer(),
-                    const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: white)),
-                    const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          const Text("Serving delicious meals", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                          const Spacer(),
-                          Container(
-                            padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-                            decoration: const BoxDecoration(color: brown, borderRadius: BorderRadius.only(topRight: Radius.circular(15), topLeft: Radius.circular(15))),
-                            child: const Icon(FontAwesome.circle_chevron_right_solid, size: 15),
+                          const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: white)),
+                          const SizedBox(height: 10),
+                          Row(
+                            children: <Widget>[
+                              const Text("Serving delicious meals", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: white)),
+                              const Spacer(),
+                              Container(
+                                padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+                                decoration: const BoxDecoration(color: brown, borderRadius: BorderRadius.only(topRight: Radius.circular(15), topLeft: Radius.circular(15))),
+                                child: const Icon(FontAwesome.circle_chevron_right_solid, size: 15),
+                              ),
+                            ],
                           ),
+                          const SizedBox(height: 10),
+                          Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
                   ],
                 ),
               ),
@@ -188,37 +194,24 @@ class _HomeState extends State<Home> {
           SizedBox(
             height: 150,
             child: GridView.builder(
-              shrinkWrap: true,
+              //shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) => Container(
                 padding: const EdgeInsets.all(16),
-                margin: const EdgeInsets.all(16),
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  //mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     const Spacer(),
                     const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-                    const SizedBox(height: 10),
-                    Row(
-                      children: <Widget>[
-                        const Text("Serving delicious meals", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                        const Spacer(),
-                        Container(
-                          padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-                          decoration: const BoxDecoration(color: brown, borderRadius: BorderRadius.only(topRight: Radius.circular(15), topLeft: Radius.circular(15))),
-                          child: const Icon(FontAwesome.circle_chevron_right_solid, size: 15),
-                        ),
-                      ],
-                    ),
                     const SizedBox(height: 10),
                     Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
                   ],
                 ),
               ),
               itemCount: 20,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
             ),
           ),
         ],
