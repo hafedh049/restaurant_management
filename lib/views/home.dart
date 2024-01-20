@@ -63,7 +63,18 @@ class _HomeState extends State<Home> {
             ),
             const SizedBox(height: 30),
             SizedBox(
-              height: 200,child: ListView.separated(itemBuilder: (BuildContext context,int index) => Container(decoration: BoxDecoration(),child: ,), separatorBuilder: (BuildContext context,int index) =>const SizedBox(width: 20) , itemCount: 20,),
+              height: 200,
+              child: ListView.separated(
+                itemBuilder: (BuildContext context, int index) => Container(
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[],
+                  ),
+                ),
+                separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 20),
+                itemCount: 20,
+              ),
             )
           ],
         ),
