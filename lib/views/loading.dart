@@ -6,11 +6,6 @@ class Loading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Center(child: LottieBuilder.asset("assets/lotties/loading.json")),
-      ),
-    );
+    return Center(child: LottieBuilder.asset("assets/lotties/loading.json"));
   }
 }

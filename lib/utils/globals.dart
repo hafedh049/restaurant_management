@@ -9,6 +9,7 @@ String selectedPage = "Home";
 
 const Color green = Colors.green;
 const Color orange = Colors.orange;
-const Color brown = Colors.orange;
-const Color yellow = Colors.orange;
-const Color white = Colors.orange;
+const Color brown = Colors.brown;
+const Color yellow = Colors.yellow;
+const Color white = Colors.white;
+const Color grey = Colors.grey;

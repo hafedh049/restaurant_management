@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:icons_plus/icons_plus.dart';
+import 'package:restaurant_management/utils/globals.dart';
 
-import '../utils/globals.dart';
-
-class MustSignIn extends StatefulWidget {
-  const MustSignIn({super.key});
+class EmptyCart extends StatefulWidget {
+  const EmptyCart({super.key});
 
   @override
-  State<MustSignIn> createState() => _MustSignInState();
+  State<EmptyCart> createState() => _EmptyCartState();
 }
 
-class _MustSignInState extends State<MustSignIn> {
+class _EmptyCartState extends State<EmptyCart> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -27,7 +27,7 @@ class _MustSignInState extends State<MustSignIn> {
                       Theme.of(context).focusColor.withOpacity(0.7),
                       Theme.of(context).focusColor.withOpacity(0.05),
                     ])),
-                child: Icon(Icons.https, color: Theme.of(context).scaffoldBackgroundColor, size: 70),
+                child: Icon(Bootstrap.cart, color: Theme.of(context).scaffoldBackgroundColor, size: 70),
               ),
               Positioned(
                 right: -30,
@@ -56,20 +56,15 @@ class _MustSignInState extends State<MustSignIn> {
             ],
           ),
           const SizedBox(height: 30),
-          Flexible(child: Text("You must sign-in to access this sections", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500, color: settings["main_color"]))),
+          Flexible(child: Text("Don't have any item in your cart", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500, color: settings["main_color"]))),
           const SizedBox(height: 30),
           GestureDetector(
             onTap: () {},
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(color: brown, borderRadius: BorderRadius.circular(15)),
-              child: const Text("Login", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: white)),
+              child: const Text("Start Exploring", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: white)),
             ),
-          ),
-          const SizedBox(height: 30),
-          GestureDetector(
-            onTap: () {},
-            child: Text("I don't have an account", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: settings["main_color"])),
           ),
         ],
       ),

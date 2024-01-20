@@ -62,10 +62,13 @@ class _HolderState extends State<Holder> {
           );
         },
       ),
-      body: PageView.builder(
-        itemCount: _pages.length,
-        itemBuilder: (BuildContext context, int index) => _pages[index]["page"],
-        controller: _pagesController,
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: PageView.builder(
+          itemCount: _pages.length,
+          itemBuilder: (BuildContext context, int index) => _pages[index]["page"],
+          controller: _pagesController,
+        ),
       ),
     );
   }
