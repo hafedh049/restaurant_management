@@ -13,3 +13,4 @@ const Color brown = Colors.brown;
 const Color yellow = Colors.yellow;
 const Color white = Colors.white;
 const Color grey = Colors.grey;
+const Color blue = Colors.blue;

@@ -36,12 +36,12 @@ class _OrdersLoginState extends State<OrdersLogin> {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {},
-                      child: const Text("Login as a Driver", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: white)),
+                      child: const Text("Login as a Driver", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: blue)),
                     ),
                     const SizedBox(height: 20),
                     GestureDetector(
                       onTap: () {},
-                      child: const Text("Login as a Manager", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: white)),
+                      child: const Text("Login as a Manager", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: blue)),
                     ),
                   ],
                 ),
@@ -90,14 +90,22 @@ class _OrdersLoginState extends State<OrdersLogin> {
                               child: Container(
                                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                                 decoration: BoxDecoration(color: null, borderRadius: BorderRadius.circular(15)),
-                                child: Text("Send verification code", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: settings["main_color"])),
+                                child: const Text("Send verification code", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: white)),
                               ),
                             ),
                           ],
                         ),
                       ),
                       const SizedBox(height: 30),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Text("Or login with password", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: blue)),
+                      ),
                       const SizedBox(height: 30),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Text("Skip", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: blue)),
+                      ),
                     ],
                   ),
                 ),
