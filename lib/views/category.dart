@@ -22,7 +22,8 @@ class _CategoryState extends State<Category> {
             padding: EdgeInsets.zero,
             itemBuilder: (BuildContext context, int index) => Container(
               height: 150,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"))),
+              width: MediaQuery.sizeOf(context).width,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
               child: Center(child: Text("SOUPS".toUpperCase(), style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: white))),
             ),
             separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 20),

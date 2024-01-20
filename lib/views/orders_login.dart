@@ -25,7 +25,7 @@ class _OrdersLoginState extends State<OrdersLogin> {
       children: <Widget>[
         Column(
           children: <Widget>[
-            Container(color: brown, height: MediaQuery.sizeOf(context).height * .3),
+            Container(color: brown, height: MediaQuery.sizeOf(context).height * .4),
             Expanded(
               child: Container(
                 color: white,
@@ -51,16 +51,17 @@ class _OrdersLoginState extends State<OrdersLogin> {
         ),
         Center(
           child: SizedBox(
-            width: MediaQuery.sizeOf(context).width * 8,
+            width: MediaQuery.sizeOf(context).width * 6,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 const Text("Let's Start with Login!", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: white)),
                 const SizedBox(height: 30),
                 Container(
+                  width: MediaQuery.sizeOf(context).width * 6,
                   padding: const EdgeInsets.all(24),
-                  decoration: BoxDecoration(boxShadow: <BoxShadow>[BoxShadow(color: grey.withOpacity(.1))], color: white, borderRadius: BorderRadius.circular(15)),
+                  decoration: BoxDecoration(boxShadow: <BoxShadow>[BoxShadow(color: grey.withOpacity(.1))], color: grey.withOpacity(.1), borderRadius: BorderRadius.circular(15)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
@@ -84,27 +85,21 @@ class _OrdersLoginState extends State<OrdersLogin> {
                       const SizedBox(height: 30),
                       GestureDetector(
                         onTap: () {},
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                                decoration: BoxDecoration(color: null, borderRadius: BorderRadius.circular(15)),
-                                child: const Text("Send verification code", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: white)),
-                              ),
-                            ),
-                          ],
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          decoration: BoxDecoration(color: null, borderRadius: BorderRadius.circular(15)),
+                          child: const Text("Send verification code", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: white)),
                         ),
                       ),
                       const SizedBox(height: 30),
                       GestureDetector(
                         onTap: () {},
-                        child: Text("Or login with password", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: blue)),
+                        child: const Text("Or login with password", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: blue)),
                       ),
                       const SizedBox(height: 30),
                       GestureDetector(
                         onTap: () {},
-                        child: Text("Skip", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: blue)),
+                        child: const Text("Skip", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: blue)),
                       ),
                     ],
                   ),

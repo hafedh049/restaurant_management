@@ -80,13 +80,13 @@ class _HomeState extends State<Home> {
                   children: <Widget>[
                     Container(
                       padding: const EdgeInsets.all(8),
-                      decoration: const BoxDecoration(color: green, borderRadius: BorderRadius.only(topRight: Radius.circular(15), topLeft: Radius.circular(15))),
+                      decoration: const BoxDecoration(color: green, borderRadius: BorderRadius.only(topRight: Radius.circular(15), bottomRight: Radius.circular(15))),
                       child: const Text("Open", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                     ),
                     const SizedBox(height: 10),
                     Container(
                       padding: const EdgeInsets.all(8),
-                      decoration: const BoxDecoration(color: orange, borderRadius: BorderRadius.only(topRight: Radius.circular(15), topLeft: Radius.circular(15))),
+                      decoration: const BoxDecoration(color: orange, borderRadius: BorderRadius.only(topRight: Radius.circular(15), bottomRight: Radius.circular(15))),
                       child: const Text("Pick-up", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                     ),
                     const Spacer(),
@@ -104,7 +104,7 @@ class _HomeState extends State<Home> {
                               const Spacer(),
                               Container(
                                 padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-                                decoration: const BoxDecoration(color: brown, borderRadius: BorderRadius.only(topRight: Radius.circular(15), topLeft: Radius.circular(15))),
+                                decoration: BoxDecoration(color: brown, borderRadius: BorderRadius.circular(5)),
                                 child: const Icon(FontAwesome.circle_chevron_right_solid, size: 15),
                               ),
                             ],
@@ -199,9 +199,7 @@ class _HomeState extends State<Home> {
                 final List<List<int>> pieces = spread(20);
                 return ListView.separated(
                   shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int index) => Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
+                  itemBuilder: (BuildContext context, int index) => Row(
                     children: <Widget>[
                       for (final int _ in pieces[index]) ...<Widget>[
                         Container(
