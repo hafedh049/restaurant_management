@@ -50,3 +50,19 @@ Future<bool> load() async {
     return false;
   }
 }
+
+List<List<int>> spread(int n) {
+  final List<List<int>> result = <List<int>>[];
+  if (n.isOdd) {
+    for (int index = 0; index < n; index += 2) {
+      result.add(<int>[index, index + 1]);
+    }
+  } else {
+    int index = 0;
+    for (; index < n - 1; index += 2) {
+      result.add(<int>[index, index + 1]);
+    }
+    result.add(<int>[index]);
+  }
+  return result;
+}
