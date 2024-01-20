@@ -54,6 +54,17 @@ class _HomeState extends State<Home> {
               ],
             ),
             const SizedBox(height: 30),
+            Row(
+              children: <Widget>[
+                const Text("Top Stores", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                const Spacer(),
+                InkWell(onTap: () {}, child: const Text("View all", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
+              ],
+            ),
+            const SizedBox(height: 30),
+            SizedBox(
+              height: 200,child: ListView.separated(itemBuilder: (BuildContext context,int index) => Container(decoration: BoxDecoration(),child: ,), separatorBuilder: (BuildContext context,int index) =>const SizedBox(width: 20) , itemCount: 20,),
+            )
           ],
         ),
       ),
