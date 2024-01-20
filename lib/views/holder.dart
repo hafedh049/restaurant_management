@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:restaurant_management/utils/globals.dart';
+import 'package:restaurant_management/views/drawer.dart';
 
 class Holder extends StatefulWidget {
   const Holder({super.key});
@@ -31,6 +32,7 @@ class _HolderState extends State<Holder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const Drawery(),
       bottomNavigationBar: StatefulBuilder(
         builder: (BuildContext context, void Function(void Function()) _) {
           return Container(
