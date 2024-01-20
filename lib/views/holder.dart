@@ -57,7 +57,7 @@ class _HolderState extends State<Holder> {
                           children: <Widget>[
                             Icon(item["icon"], size: 15, color: brown),
                             const SizedBox(height: 10),
-                            Text(item["title"], style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: brown)),
+                            Text(item["title"], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: brown)),
                           ],
                         ),
                       ),
