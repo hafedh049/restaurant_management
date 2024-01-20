@@ -40,9 +40,12 @@ class _OrdersLoginState extends State<OrdersLogin> {
             ),
           ],
         ),
-        Column(
-          crossAxisAlignment: Cro,
-          children: <Widget>[],
+        Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[],
+          ),
         )
       ],
     );
