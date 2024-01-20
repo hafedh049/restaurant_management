@@ -31,7 +31,7 @@ class _OrdersLoginState extends State<OrdersLogin> {
                 color: white,
                 alignment: Alignment.bottomCenter,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     GestureDetector(
@@ -50,62 +50,67 @@ class _OrdersLoginState extends State<OrdersLogin> {
           ],
         ),
         Center(
-          child: SizedBox(
-            width: MediaQuery.sizeOf(context).width * 6,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const Text("Let's Start with Login!", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: white)),
-                const SizedBox(height: 30),
-                Container(
-                  width: MediaQuery.sizeOf(context).width * 6,
-                  padding: const EdgeInsets.all(24),
-                  decoration: BoxDecoration(boxShadow: <BoxShadow>[BoxShadow(color: grey.withOpacity(.1))], color: grey.withOpacity(.1), borderRadius: BorderRadius.circular(15)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      InternationalPhoneNumberInput(
-                        onInputChanged: (PhoneNumber number) {},
-                        onInputValidated: (bool value) {},
-                        selectorConfig: const SelectorConfig(
-                          selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-                          useBottomSheetSafeArea: true,
-                        ),
-                        ignoreBlank: false,
-                        autoValidateMode: AutovalidateMode.disabled,
-                        selectorTextStyle: const TextStyle(color: brown),
-                        initialValue: null,
-                        textFieldController: _phoneController,
-                        formatInput: true,
-                        keyboardType: const TextInputType.numberWithOptions(),
-                        inputBorder: const OutlineInputBorder(),
-                      ),
-                      const SizedBox(height: 30),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                          decoration: BoxDecoration(color: null, borderRadius: BorderRadius.circular(15)),
-                          child: const Text("Send verification code", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: white)),
-                        ),
-                      ),
-                      const SizedBox(height: 30),
-                      GestureDetector(
-                        onTap: () {},
-                        child: const Text("Or login with password", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: blue)),
-                      ),
-                      const SizedBox(height: 30),
-                      GestureDetector(
-                        onTap: () {},
-                        child: const Text("Skip", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: blue)),
-                      ),
-                    ],
-                  ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              const Text("Let's Start with Login!", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: white)),
+              const SizedBox(height: 30),
+              Container(
+                width: MediaQuery.sizeOf(context).width * .8,
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.1), offset: const Offset(7, 7), blurStyle: BlurStyle.outer)],
+                  color: white,
+                  borderRadius: BorderRadius.circular(15),
                 ),
-              ],
-            ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    InternationalPhoneNumberInput(
+                      onInputChanged: (PhoneNumber number) {},
+                      onInputValidated: (bool value) {},
+                      selectorConfig: const SelectorConfig(
+                        selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                        useBottomSheetSafeArea: true,
+                      ),
+                      ignoreBlank: false,
+                      autoValidateMode: AutovalidateMode.disabled,
+                      selectorTextStyle: const TextStyle(color: brown),
+                      initialValue: null,
+                      textFieldController: _phoneController,
+                      formatInput: true,
+                      keyboardType: const TextInputType.numberWithOptions(),
+                      inputBorder: const OutlineInputBorder(),
+                    ),
+                    const SizedBox(height: 30),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width,
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: brown,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.1), offset: const Offset(5, 7), blurStyle: BlurStyle.outer)],
+                        ),
+                        child: const Center(child: Text("Send verification code", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: white))),
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                    GestureDetector(
+                      onTap: () {},
+                      child: const Text("Or login with password", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: blue)),
+                    ),
+                    const SizedBox(height: 30),
+                    GestureDetector(
+                      onTap: () {},
+                      child: const Text("Skip", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: blue)),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         )
       ],
