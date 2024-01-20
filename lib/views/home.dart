@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
               itemBuilder: (BuildContext context, int index) => Container(
                 width: 300,
                 padding: const EdgeInsets.symmetric(vertical: 16),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -140,7 +140,7 @@ class _HomeState extends State<Home> {
                   Container(
                     width: 80,
                     height: 80,
-                    decoration: const BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
+                    decoration: const BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
                   ),
                   const SizedBox(height: 10),
                   const Text("Appetizers", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: black)),
@@ -170,7 +170,7 @@ class _HomeState extends State<Home> {
                   Container(
                     width: 100,
                     height: 100,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
                   ),
                   const SizedBox(height: 10),
                   const Text("Food", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: black)),
@@ -201,9 +201,9 @@ class _HomeState extends State<Home> {
               for (int index = 0; index < 20; index += 1)
                 Container(
                   height: 300,
-                  width: (MediaQuery.sizeOf(context).width - 48) / 2,
+                  width: (MediaQuery.sizeOf(context).width - 48) / 2 - 20,
                   padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.png"), fit: BoxFit.cover)),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
