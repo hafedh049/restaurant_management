@@ -10,6 +10,13 @@ class StoreProducts extends StatefulWidget {
 }
 
 class _StoreProductsState extends State<StoreProducts> {
+  final List<Map<String, dynamic>> _filters = <Map<String, dynamic>>[
+    <String, dynamic>{"text": "All", "icon": null},
+    <String, dynamic>{"text": "All", "icon": "assets/pictures/5.jpg"},
+    <String, dynamic>{"text": "All", "icon": "assets/pictures/5.jpg"},
+    <String, dynamic>{"text": "All", "icon": "assets/pictures/5.jpg"},
+  ];
+  String _filter = "All";
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,7 +26,7 @@ class _StoreProductsState extends State<StoreProducts> {
           children: <Widget>[
             IconButton(
               onPressed: () => Navigator.pop(context),
-              icon: const Icon(Bootstrap.chevron_left, size: 15),
+              icon: const Icon(Bootstrap.chevron_left, size: 15, color: brown),
             ),
             const Spacer(),
             const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: brown)),
@@ -53,7 +60,7 @@ class _StoreProductsState extends State<StoreProducts> {
         const Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Icon(Bootstrap.chevron_left, size: 15),
+            Icon(FontAwesome.id_badge, size: 15, color: brown),
             SizedBox(width: 30),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,19 +87,50 @@ class _StoreProductsState extends State<StoreProducts> {
                     width: 100,
                     padding: const EdgeInsets.all(4),
                     alignment: Alignment.topRight,
-                    decoration: BoxDecoration(image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg")), borderRadius: BorderRadius.circular(5)),
+                    decoration: BoxDecoration(image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover), borderRadius: BorderRadius.circular(5)),
                     child: Container(
                       padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: brown),
-                      child: const Text("12.99", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: white)),
+                      child: const Text("12.99", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w300, color: white)),
                     ),
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Text("Margherita Pizza Tasty Bites", textAlign: TextAlign.center, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: brown)),
+                const Text("Margherita Pizza\nTasty Bites", textAlign: TextAlign.center, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: brown)),
               ],
             ),
           ),
+        ),
+        const SizedBox(height: 30),
+        const Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Icon(Bootstrap.list, size: 15, color: brown),
+            SizedBox(width: 30),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text("Products", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: brown)),
+                Text("Click on the product to get more details about it", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: brown)),
+              ],
+            ),
+          ],
+        ),
+        const SizedBox(height: 30),
+        StatefulBuilder(
+          builder: (BuildContext context, void Function(void Function()) _) {
+            return Row(
+              children: <Widget>[
+                for(final Map<String,dynamic> item in _filters)
+                Container(
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:_filter == item["text"] ?, ),
+                  padding: const EdgeInsets.all(4),
+                  margin: const EdgeInsets.only(right: 20),
+                ),
+              ],
+            );
+          },
         ),
       ],
     );
