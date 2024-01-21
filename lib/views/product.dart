@@ -21,7 +21,7 @@ class _ProductState extends State<Product> {
         decoration: BoxDecoration(
           color: white,
           borderRadius: const BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
-          boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.2), offset: const Offset(2, 2))],
+          boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.2), offset: const Offset(2, -2))],
         ),
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -44,14 +44,14 @@ class _ProductState extends State<Product> {
                   child: Container(
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: brown)),
-                    child: const Icon(FontAwesome.plus_solid, size: 25, color: brown),
+                    child: const Icon(FontAwesome.minus_solid, size: 20, color: brown),
                   ),
                 ),
                 const SizedBox(width: 10),
                 StatefulBuilder(
                   key: _productCountKey,
                   builder: (BuildContext context, void Function(void Function()) _) {
-                    return Text(_productCount.toString(), style: const TextStyle(color: brown, fontSize: 16, fontWeight: FontWeight.w500));
+                    return Text(_productCount.toString(), style: const TextStyle(color: brown, fontSize: 16, fontWeight: FontWeight.bold));
                   },
                 ),
                 const SizedBox(width: 10),
@@ -65,7 +65,7 @@ class _ProductState extends State<Product> {
                   child: Container(
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: brown)),
-                    child: const Icon(FontAwesome.plus_solid, size: 25, color: brown),
+                    child: const Icon(FontAwesome.plus_solid, size: 20, color: brown),
                   ),
                 ),
               ],
@@ -95,6 +95,7 @@ class _ProductState extends State<Product> {
                       child: const Row(
                         children: <Widget>[
                           Text("Add to cart", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: white)),
+                          Spacer(),
                           Text("25.99", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: white)),
                         ],
                       ),
@@ -159,7 +160,7 @@ class _ProductState extends State<Product> {
                       ),
                       const Spacer(),
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           const Text("25.99", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: brown)),
@@ -180,7 +181,7 @@ class _ProductState extends State<Product> {
                   const SizedBox(height: 20),
                   const Row(
                     children: <Widget>[
-                      Icon(Bootstrap.chevron_left, size: 25, color: brown),
+                      Icon(FontAwesome.file_contract_solid, size: 20, color: brown),
                       SizedBox(width: 30),
                       Text("Reviews", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: brown)),
                     ],
