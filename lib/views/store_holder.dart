@@ -1,54 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:restaurant_management/utils/globals.dart';
-import 'package:restaurant_management/views/category.dart';
-import 'package:restaurant_management/views/drawer.dart';
-import 'package:restaurant_management/views/empty_cart.dart';
-import 'package:restaurant_management/views/home.dart';
-import 'package:restaurant_management/views/must_sign_in.dart';
-import 'package:restaurant_management/views/orders_login.dart';
+import 'package:restaurant_management/views/store.dart';
 
-class Holder extends StatefulWidget {
-  const Holder({super.key});
+import '../utils/globals.dart';
+import 'must_sign_in.dart';
+
+class StoreHolder extends StatefulWidget {
+  const StoreHolder({super.key});
 
   @override
-  State<Holder> createState() => _HolderState();
+  State<StoreHolder> createState() => _StoreHolderState();
 }
 
-class _HolderState extends State<Holder> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
+class _StoreHolderState extends State<StoreHolder> {
   final List<Map<String, dynamic>> _pages = <Map<String, dynamic>>[
-    <String, dynamic>{"title": "Notifications", "icon": Bootstrap.bell, "page": const MustSignIn()},
+    <String, dynamic>{"title": "Notifications", "icon": Bootstrap.bell, "page": const Store()},
     <String, dynamic>{"title": "Category", "icon": Bootstrap.circle, "page": const Category()},
-    <String, dynamic>{"title": "Home", "icon": Bootstrap.house, "page": const Home()},
-    <String, dynamic>{"title": "Orders", "icon": Bootstrap.list_task, "page": const OrdersLogin()},
-    <String, dynamic>{"title": "Cart", "icon": Bootstrap.cart, "page": const EmptyCart()},
   ];
 
   final PageController _pagesController = PageController();
-
-  @override
-  void dispose() {
-    _pagesController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            _scaffoldKey.currentState!.openDrawer();
-          },
-          icon: const Icon(Bootstrap.grid_3x3, size: 15),
-        ),
-        title: const Text("Restaurant", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500)),
-        centerTitle: true,
-      ),
-      drawer: const Drawery(),
       bottomNavigationBar: StatefulBuilder(
         builder: (BuildContext context, void Function(void Function()) _) {
           return Container(
@@ -82,13 +55,9 @@ class _HolderState extends State<Holder> {
           );
         },
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: PageView.builder(
-          itemCount: _pages.length,
-          itemBuilder: (BuildContext context, int index) => _pages[index]["page"],
-          controller: _pagesController,
-        ),
+      body: PageView.builder(
+        itemCount: _pages.length,
+        itemBuilder: (BuildContext context, int index) => _pages[index],
       ),
     );
   }
