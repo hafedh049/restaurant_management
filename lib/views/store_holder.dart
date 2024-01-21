@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:restaurant_management/views/store.dart';
+import 'package:restaurant_management/views/store_products.dart';
 
 import '../utils/globals.dart';
-import 'must_sign_in.dart';
 
 class StoreHolder extends StatefulWidget {
   const StoreHolder({super.key});
@@ -14,11 +14,18 @@ class StoreHolder extends StatefulWidget {
 
 class _StoreHolderState extends State<StoreHolder> {
   final List<Map<String, dynamic>> _pages = <Map<String, dynamic>>[
-    <String, dynamic>{"title": "Notifications", "icon": Bootstrap.bell, "page": const Store()},
-    <String, dynamic>{"title": "Category", "icon": Bootstrap.circle, "page": const Category()},
+    <String, dynamic>{"title": "Store", "icon": Bootstrap.shop, "page": const Store()},
+    <String, dynamic>{"title": "Store Products", "icon": Bootstrap.bag, "page": const StoreProducts()},
   ];
 
   final PageController _pagesController = PageController();
+
+  @override
+  void dispose() {
+    _pagesController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,24 +36,24 @@ class _StoreHolderState extends State<StoreHolder> {
             padding: const EdgeInsets.all(8),
             color: white,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 for (final Map<String, dynamic> item in _pages)
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        _(() => selectedPage = item["title"]);
-                        _pagesController.jumpToPage(_pages.indexOf(item));
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 4),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Icon(item["icon"], size: 15, color: brown),
-                            const SizedBox(height: 10),
-                            Text(item["title"], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: brown)),
-                          ],
-                        ),
+                  InkWell(
+                    onTap: () {
+                      _(() => selectedPage = item["title"]);
+                      _pagesController.jumpToPage(_pages.indexOf(item));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(color: brown, borderRadius: BorderRadius.circular(15)),
+                      padding: const EdgeInsets.all(4),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Icon(item["icon"], size: 15, color: brown),
+                          const SizedBox(width: 10),
+                          Text(item["title"], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: brown)),
+                        ],
                       ),
                     ),
                   ),
@@ -55,9 +62,12 @@ class _StoreHolderState extends State<StoreHolder> {
           );
         },
       ),
-      body: PageView.builder(
-        itemCount: _pages.length,
-        itemBuilder: (BuildContext context, int index) => _pages[index],
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: PageView.builder(
+          itemCount: _pages.length,
+          itemBuilder: (BuildContext context, int index) => _pages[index]["page"],
+        ),
       ),
     );
   }
