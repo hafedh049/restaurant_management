@@ -10,6 +10,13 @@ class StoreProducts extends StatefulWidget {
 class _StoreProductsState extends State<StoreProducts> {
   @override
   Widget build(BuildContext context) {
-    return Column();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Row(
+          children: <Widget>[],
+        ),
+      ],
+    );
   }
 }

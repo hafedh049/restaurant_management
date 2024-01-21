@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:restaurant_management/utils/callbacks.dart';
+import 'package:restaurant_management/views/store_holder.dart';
 
 import '../utils/globals.dart';
 
@@ -20,7 +21,6 @@ class _HomeState extends State<Home> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const SizedBox(height: 30),
           Row(
             children: <Widget>[
               IconButton(
@@ -28,7 +28,10 @@ class _HomeState extends State<Home> {
                 icon: const Icon(Bootstrap.pin_map, size: 15),
               ),
               const Spacer(),
-              const Text("Add address", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+              GestureDetector(
+                onTap: () {},
+                child: const Text("Add address", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+              ),
               const Spacer(),
               Tooltip(
                 message: "Delivery",
@@ -53,7 +56,11 @@ class _HomeState extends State<Home> {
               const SizedBox(width: 30),
               const Text("Top Stores", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
               const Spacer(),
-              InkWell(onTap: () {}, child: const Text("View all", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
+              InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const StoreHolder()));
+                  },
+                  child: const Text("View all", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
             ],
           ),
           const SizedBox(height: 30),

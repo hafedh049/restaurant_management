@@ -32,9 +32,8 @@ class _StoreHolderState extends State<StoreHolder> {
       bottomNavigationBar: StatefulBuilder(
         builder: (BuildContext context, void Function(void Function()) _) {
           return Container(
-            decoration: BoxDecoration(boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.2), offset: const Offset(7, 7), blurStyle: BlurStyle.outer)]),
+            decoration: BoxDecoration(color: white, boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.2), offset: const Offset(2, -7), blurStyle: BlurStyle.outer)]),
             padding: const EdgeInsets.all(8),
-            color: white,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -45,14 +44,14 @@ class _StoreHolderState extends State<StoreHolder> {
                       _pagesController.jumpToPage(_pages.indexOf(item));
                     },
                     child: Container(
-                      decoration: BoxDecoration(color: brown, borderRadius: BorderRadius.circular(15)),
-                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(color: brown, borderRadius: BorderRadius.circular(5)),
+                      padding: const EdgeInsets.all(8),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Icon(item["icon"], size: 15, color: brown),
+                          Icon(item["icon"], size: 15, color: white),
                           const SizedBox(width: 10),
-                          Text(item["title"], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: brown)),
+                          Text(item["title"], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: white)),
                         ],
                       ),
                     ),
@@ -65,6 +64,7 @@ class _StoreHolderState extends State<StoreHolder> {
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: PageView.builder(
+          controller: _pagesController,
           itemCount: _pages.length,
           itemBuilder: (BuildContext context, int index) => _pages[index]["page"],
         ),

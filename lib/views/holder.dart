@@ -52,9 +52,8 @@ class _HolderState extends State<Holder> {
       bottomNavigationBar: StatefulBuilder(
         builder: (BuildContext context, void Function(void Function()) _) {
           return Container(
-            decoration: BoxDecoration(boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.2), offset: const Offset(7, 7), blurStyle: BlurStyle.outer)]),
+            decoration: BoxDecoration(color: white, boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.2), offset: const Offset(7, 7), blurStyle: BlurStyle.outer)]),
             padding: const EdgeInsets.all(8),
-            color: white,
             child: Row(
               children: <Widget>[
                 for (final Map<String, dynamic> item in _pages)
