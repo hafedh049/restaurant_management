@@ -161,9 +161,25 @@ class _StoreProductsState extends State<StoreProducts> {
             itemBuilder: (BuildContext context, int index) => AnimatedContainer(
               duration: 500.ms,
               padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: white,
+                boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.2), offset: const Offset(2, -7), blurStyle: BlurStyle.outer)],
+              ),
               child: Row(
-                children: <Widget>[],
+                children: <Widget>[
+                  Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
+                  ),
+                  const SizedBox(width: 20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[],
+                  ),
+                ],
               ),
             ),
           ),
