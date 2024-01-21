@@ -15,9 +15,9 @@ class StoreProducts extends StatefulWidget {
 class _StoreProductsState extends State<StoreProducts> {
   final List<Map<String, dynamic>> _filters = <Map<String, dynamic>>[
     <String, dynamic>{"text": "All", "icon": null},
-    <String, dynamic>{"text": "All", "icon": "assets/pictures/5.jpg"},
-    <String, dynamic>{"text": "All", "icon": "assets/pictures/5.jpg"},
-    <String, dynamic>{"text": "All", "icon": "assets/pictures/5.jpg"},
+    <String, dynamic>{"text": "Soups", "icon": "assets/pictures/5.jpg"},
+    <String, dynamic>{"text": "Apetizers", "icon": "assets/pictures/5.jpg"},
+    <String, dynamic>{"text": "Pizzas", "icon": "assets/pictures/5.jpg"},
   ];
   String _filter = "All";
   @override
@@ -134,7 +134,7 @@ class _StoreProductsState extends State<StoreProducts> {
                     child: AnimatedContainer(
                       duration: 500.ms,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(5),
                         color: _filter == item["text"] ? brown : brown.withOpacity(.1),
                       ),
                       padding: const EdgeInsets.all(8),
@@ -146,7 +146,7 @@ class _StoreProductsState extends State<StoreProducts> {
                             Image.asset(item["icon"], width: 20, height: 20, fit: BoxFit.cover),
                             const SizedBox(width: 10),
                           ],
-                          Text(item["text"], style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: _filter != item["text"] ? brown : brown.withOpacity(.1))),
+                          Text(item["text"], style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: _filter != item["text"] ? brown : white)),
                         ],
                       ),
                     ),
@@ -166,7 +166,7 @@ class _StoreProductsState extends State<StoreProducts> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 color: white,
-                boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.2), offset: const Offset(2, -7), blurStyle: BlurStyle.outer)],
+                boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.2), offset: const Offset(-2, -7), blurStyle: BlurStyle.outer)],
               ),
               child: Row(
                 children: <Widget>[
@@ -180,7 +180,7 @@ class _StoreProductsState extends State<StoreProducts> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: white)),
+                      const Text("Tasty Bites", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: brown)),
                       const SizedBox(height: 10),
                       Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
                     ],
