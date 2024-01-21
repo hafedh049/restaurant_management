@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -164,7 +166,15 @@ class _StoreProductsState extends State<StoreProducts> {
               return ListView.separated(
                 itemCount: 20,
                 separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 20),
-                itemBuilder: (BuildContext context, int index) => ProductTile(),
+                itemBuilder: (BuildContext context, int index) => ProductTile(
+                  data: <String, dynamic>{
+                    "picture": "assets/pictures/5.jpg",
+                    "title": "Tasty Bites",
+                    "rating": "✭" * (Random().nextInt(5) + 1),
+                    "price": "${Random().nextInt(90) + 10}.00",
+                  },
+                  callback: () {},
+                ),
               );
             },
           ),

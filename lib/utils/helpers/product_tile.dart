@@ -1,13 +1,12 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import '../globals.dart';
 
 class ProductTile extends StatefulWidget {
-  const ProductTile({super.key, required this.callback});
+  const ProductTile({super.key, required this.callback, required this.data});
 
+  final Map<String, dynamic> data;
   final void Function() callback;
 
   @override
@@ -25,8 +24,8 @@ class _ProductTileState extends State<ProductTile> {
       splashColor: transparent,
       highlightColor: transparent,
       child: AnimatedScale(
-        duration: 500.ms,
-        scale: _isHovered ? 1.05 : 1,
+        duration: 300.ms,
+        scale: _isHovered ? 1.01 : 1,
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
@@ -39,20 +38,20 @@ class _ProductTileState extends State<ProductTile> {
               Container(
                 width: 60,
                 height: 60,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), image: DecorationImage(image: AssetImage(widget.data["picture"]), fit: BoxFit.cover)),
               ),
               const SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  const Text("Tasty Bites", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: brown)),
+                  Text(widget.data["title"], style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: brown)),
                   const SizedBox(height: 10),
-                  Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
+                  Text(widget.data["rating"], style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
                 ],
               ),
               const Spacer(),
-              Text("${Random().nextInt(90) + 10}.00", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: brown)),
+              Text(widget.data["price"], style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: brown)),
             ],
           ),
         ),
