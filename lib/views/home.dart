@@ -20,16 +20,6 @@ class _HomeState extends State<Home> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Bootstrap.grid_3x3, size: 15),
-              ),
-              const SizedBox(width: 30),
-              const Text("Restaurant", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500)),
-            ],
-          ),
           const SizedBox(height: 30),
           Row(
             children: <Widget>[

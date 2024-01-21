@@ -16,6 +16,8 @@ class Holder extends StatefulWidget {
 }
 
 class _HolderState extends State<Holder> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   final List<Map<String, dynamic>> _pages = <Map<String, dynamic>>[
     <String, dynamic>{"title": "Notifications", "icon": Bootstrap.bell, "page": const MustSignIn()},
     <String, dynamic>{"title": "Category", "icon": Bootstrap.circle, "page": const Category()},
@@ -35,6 +37,17 @@ class _HolderState extends State<Holder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            _scaffoldKey.currentState!.openDrawer();
+          },
+          icon: const Icon(Bootstrap.grid_3x3, size: 15),
+        ),
+        title: const Text("Restaurant", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500)),
+        centerTitle: true,
+      ),
       drawer: const Drawery(),
       bottomNavigationBar: StatefulBuilder(
         builder: (BuildContext context, void Function(void Function()) _) {

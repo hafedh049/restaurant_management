@@ -20,33 +20,27 @@ class _WelcomeState extends State<Welcome> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(24),
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text("Welcome", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: settings["main_color"])),
-              const SizedBox(height: 30),
-              Flexible(
-                child: Text(
-                  "We request you to grant us location permission for better user experience. This way we can filter out nearby deliverable stores for you.",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: settings["main_color"]),
-                  textAlign: TextAlign.center,
-                ),
+        child: Column(
+          children: <Widget>[
+            Text("Welcome", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: settings["main_color"])),
+            const SizedBox(height: 30),
+            Text(
+              "We request you to grant us location permission for better user experience. This way we can filter out nearby deliverable stores for you.",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: settings["main_color"]),
+              textAlign: TextAlign.center,
+            ),
+            const Spacer(),
+            GestureDetector(
+              onTap: _enablePermission,
+              child: Container(
+                alignment: Alignment.center,
+                width: MediaQuery.sizeOf(context).width,
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                decoration: BoxDecoration(color: brown, borderRadius: BorderRadius.circular(15)),
+                child: const Text("OK", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: white)),
               ),
-              const Spacer(),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const Holder()));
-                },
-                child: Container(
-                  width: MediaQuery.sizeOf(context).width,
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                  decoration: BoxDecoration(color: brown, borderRadius: BorderRadius.circular(15)),
-                  child: const Text("OK", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: white)),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
