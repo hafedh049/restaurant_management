@@ -51,6 +51,7 @@ class _StoreProductsState extends State<StoreProducts> {
         ),
         const SizedBox(height: 30),
         const Row(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Icon(Bootstrap.chevron_left, size: 15),
             SizedBox(width: 30),
@@ -58,11 +59,32 @@ class _StoreProductsState extends State<StoreProducts> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text("Featured Products", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: brown)),
-                Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: brown)),
+                Text("Featured Products", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: brown)),
+                Text("Click on the product to get more details about it", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: brown)),
               ],
             ),
           ],
+        ),
+        const SizedBox(height: 30),
+        SizedBox(
+          height: 200,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: 20,
+            separatorBuilder: (context, index) => const SizedBox(width: 20),
+            itemBuilder: (BuildContext context, int index) => Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    alignment: Alignment.topRight,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );
