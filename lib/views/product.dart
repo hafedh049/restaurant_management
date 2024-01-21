@@ -14,6 +14,55 @@ class _ProductState extends State<Product> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomSheet: Container(
+        decoration: BoxDecoration(
+          color: white,
+          borderRadius: const BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+          boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.2), offset: const Offset(2, 2))],
+        ),
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                const Text("Quantity", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: brown)),
+                const Spacer(),
+                InkWell(
+                  onTap: () {},
+                  splashColor: transparent,
+                  hoverColor: transparent,
+                  highlightColor: transparent,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: brown)),
+                    child: const Icon(FontAwesome.plus_solid, size: 25, color: brown),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Text(_productCount.toString(), style: const TextStyle(color: brown, fontSize: 16, fontWeight: FontWeight.w500)),
+                const SizedBox(width: 10),
+                InkWell(
+                  onTap: () {},
+                  splashColor: transparent,
+                  hoverColor: transparent,
+                  highlightColor: transparent,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: brown)),
+                    child: const Icon(FontAwesome.plus_solid, size: 25, color: brown),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 30),
+            Row(
+              children: <Widget>[],
+            ),
+          ],
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
