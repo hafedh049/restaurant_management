@@ -13,6 +13,7 @@ class StoreProducts extends StatefulWidget {
 }
 
 class _StoreProductsState extends State<StoreProducts> {
+  final GlobalKey<State> _filterKey = GlobalKey<State>();
   final List<Map<String, dynamic>> _filters = <Map<String, dynamic>>[
     <String, dynamic>{"text": "All", "icon": null},
     <String, dynamic>{"text": "Soups", "icon": "assets/pictures/5.jpg"},
@@ -130,6 +131,7 @@ class _StoreProductsState extends State<StoreProducts> {
                   GestureDetector(
                     onTap: () {
                       _(() => _filter = item["text"]);
+                      _filterKey.currentState!.setState(() {});
                     },
                     child: AnimatedContainer(
                       duration: 500.ms,
@@ -157,39 +159,48 @@ class _StoreProductsState extends State<StoreProducts> {
         ),
         const SizedBox(height: 30),
         Expanded(
-          child: ListView.separated(
-            itemCount: 20,
-            separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 20),
-            itemBuilder: (BuildContext context, int index) => AnimatedContainer(
-              duration: 500.ms,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: white,
-                boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.2), offset: const Offset(-2, -7), blurStyle: BlurStyle.outer)],
-              ),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
+          child: StatefulBuilder(
+            key: _filterKey,
+            builder: (BuildContext context, void Function(void Function()) _) {
+              return ListView.separated(
+                itemCount: 20,
+                separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 20),
+                itemBuilder: (BuildContext context, int index) => InkWell(
+                  onHover: (bool value) => setState(() {}),
+                  onTap: () {},
+                  child: AnimatedContainer(
+                    duration: 500.ms,
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: white,
+                      boxShadow: <BoxShadow>[BoxShadow(color: black.withOpacity(.2), offset: const Offset(-5, 2), blurStyle: BlurStyle.outer)],
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
+                        ),
+                        const SizedBox(width: 20),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            const Text("Tasty Bites", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: brown)),
+                            const SizedBox(height: 10),
+                            Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
+                          ],
+                        ),
+                        const Spacer(),
+                        Text("${Random().nextInt(90) + 10}.00", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: brown)),
+                      ],
+                    ),
                   ),
-                  const SizedBox(width: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      const Text("Tasty Bites", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: brown)),
-                      const SizedBox(height: 10),
-                      Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
-                    ],
-                  ),
-                  const Spacer(),
-                  Text("${Random().nextInt(90) + 10}.00", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: brown)),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           ),
         ),
       ],
