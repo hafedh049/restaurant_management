@@ -5,6 +5,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:restaurant_management/utils/globals.dart';
 import 'package:restaurant_management/utils/helpers/product_tile.dart';
+import 'package:restaurant_management/views/product.dart';
 
 class StoreProducts extends StatefulWidget {
   const StoreProducts({super.key});
@@ -173,7 +174,9 @@ class _StoreProductsState extends State<StoreProducts> {
                     "rating": "✭" * (Random().nextInt(5) + 1),
                     "price": "${Random().nextInt(90) + 10}.00",
                   },
-                  callback: () {},
+                  callback: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Product(data: <String, dynamic>{})));
+                  },
                 ),
               );
             },

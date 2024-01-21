@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:restaurant_management/views/empty_cart.dart';
 
 import '../utils/globals.dart';
 
@@ -11,6 +12,8 @@ class Product extends StatefulWidget {
 }
 
 class _ProductState extends State<Product> {
+  final GlobalKey<State> _productCountKey = GlobalKey<State>();
+  int _productCount = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +33,11 @@ class _ProductState extends State<Product> {
                 const Text("Quantity", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: brown)),
                 const Spacer(),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    if (_productCount > 1) {
+                      _productCountKey.currentState!.setState(() => _productCount -= 1);
+                    }
+                  },
                   splashColor: transparent,
                   hoverColor: transparent,
                   highlightColor: transparent,
@@ -41,10 +48,17 @@ class _ProductState extends State<Product> {
                   ),
                 ),
                 const SizedBox(width: 10),
-                Text(_productCount.toString(), style: const TextStyle(color: brown, fontSize: 16, fontWeight: FontWeight.w500)),
+                StatefulBuilder(
+                  key: _productCountKey,
+                  builder: (BuildContext context, void Function(void Function()) _) {
+                    return Text(_productCount.toString(), style: const TextStyle(color: brown, fontSize: 16, fontWeight: FontWeight.w500));
+                  },
+                ),
                 const SizedBox(width: 10),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    _productCountKey.currentState!.setState(() => _productCount += 1);
+                  },
                   splashColor: transparent,
                   hoverColor: transparent,
                   highlightColor: transparent,
@@ -58,7 +72,36 @@ class _ProductState extends State<Product> {
             ),
             const SizedBox(height: 30),
             Row(
-              children: <Widget>[],
+              children: <Widget>[
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const EmptyCart()));
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(color: brown, borderRadius: BorderRadius.circular(5)),
+                    child: const Icon(FontAwesome.heart_solid, size: 25, color: white),
+                  ),
+                ),
+                const SizedBox(width: 20),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const EmptyCart()));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(color: brown, borderRadius: BorderRadius.circular(5)),
+                      child: const Row(
+                        children: <Widget>[
+                          Text("Add to cart", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: white)),
+                          Text("25.99", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: white)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
