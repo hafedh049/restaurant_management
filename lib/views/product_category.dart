@@ -137,7 +137,7 @@ class _ProductCategoryState extends State<ProductCategory> {
                                       hoverColor: transparent,
                                       highlightColor: transparent,
                                       child: Container(
-                                        padding: const EdgeInsets.all(4),
+                                        padding: const EdgeInsets.all(8),
                                         decoration: const BoxDecoration(shape: BoxShape.circle, color: brown),
                                         child: const Icon(Bootstrap.cart, size: 20, color: white),
                                       ),

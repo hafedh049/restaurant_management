@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:restaurant_management/utils/callbacks.dart';
 import 'package:restaurant_management/views/product_category.dart';
+import 'package:restaurant_management/views/store_category.dart';
 import 'package:restaurant_management/views/store_holder.dart';
 
 import '../utils/globals.dart';
@@ -167,18 +168,23 @@ class _HomeState extends State<Home> {
             height: 150,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) => Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text("Food", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: black)),
-                ],
+              itemBuilder: (BuildContext context, int index) => GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const StoreCategory()));
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text("Food", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: black)),
+                  ],
+                ),
               ),
               separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 20),
               itemCount: 20,
