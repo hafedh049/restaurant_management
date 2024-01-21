@@ -126,8 +126,12 @@ class _StoreProductsState extends State<StoreProducts> {
         const SizedBox(height: 30),
         StatefulBuilder(
           builder: (BuildContext context, void Function(void Function()) _) {
-            return Row(
-              mainAxisSize: MainAxisSize.min,
+            return Wrap(
+              alignment: WrapAlignment.start,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              runAlignment: WrapAlignment.start,
+              runSpacing: 20,
+              spacing: 20,
               children: <Widget>[
                 for (final Map<String, dynamic> item in _filters)
                   GestureDetector(
@@ -142,7 +146,6 @@ class _StoreProductsState extends State<StoreProducts> {
                         color: _filter == item["text"] ? brown : brown.withOpacity(.1),
                       ),
                       padding: const EdgeInsets.all(8),
-                      margin: const EdgeInsets.only(right: 20),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
