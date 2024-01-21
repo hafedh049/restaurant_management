@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:restaurant_management/utils/callbacks.dart';
+import 'package:restaurant_management/views/all_stores.dart';
 import 'package:restaurant_management/views/product_category.dart';
 import 'package:restaurant_management/views/store_category.dart';
 import 'package:restaurant_management/views/store_holder.dart';
@@ -60,7 +61,7 @@ class _HomeState extends State<Home> {
               const Spacer(),
               InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const StoreHolder()));
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const AllStores(title: "Top stores")));
                   },
                   child: const Text("View all", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
             ],
@@ -70,50 +71,55 @@ class _HomeState extends State<Home> {
             height: 250,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) => Container(
-                width: 300,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: const BoxDecoration(color: green, borderRadius: BorderRadius.only(topRight: Radius.circular(15), bottomRight: Radius.circular(15))),
-                      child: const Text("Open", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                    ),
-                    const SizedBox(height: 10),
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: const BoxDecoration(color: orange, borderRadius: BorderRadius.only(topRight: Radius.circular(15), bottomRight: Radius.circular(15))),
-                      child: const Text("Pick-up", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                    ),
-                    const Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: white)),
-                          const SizedBox(height: 10),
-                          Row(
-                            children: <Widget>[
-                              const Text("Serving delicious meals", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: white)),
-                              const Spacer(),
-                              Container(
-                                padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-                                decoration: BoxDecoration(color: brown, borderRadius: BorderRadius.circular(5)),
-                                child: const Icon(FontAwesome.circle_chevron_right_solid, size: 15),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 10),
-                          Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
-                        ],
+              itemBuilder: (BuildContext context, int index) => GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const StoreHolder()));
+                },
+                child: Container(
+                  width: 300,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: const BoxDecoration(color: green, borderRadius: BorderRadius.only(topRight: Radius.circular(15), bottomRight: Radius.circular(15))),
+                        child: const Text("Open", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 10),
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: const BoxDecoration(color: orange, borderRadius: BorderRadius.only(topRight: Radius.circular(15), bottomRight: Radius.circular(15))),
+                        child: const Text("Pick-up", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                      ),
+                      const Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: white)),
+                            const SizedBox(height: 10),
+                            Row(
+                              children: <Widget>[
+                                const Text("Serving delicious meals", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: white)),
+                                const Spacer(),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+                                  decoration: BoxDecoration(color: brown, borderRadius: BorderRadius.circular(5)),
+                                  child: const Icon(FontAwesome.circle_chevron_right_solid, size: 15),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 20),
@@ -197,7 +203,11 @@ class _HomeState extends State<Home> {
               const SizedBox(width: 30),
               const Text("Most Popular", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
               const Spacer(),
-              InkWell(onTap: () {}, child: const Text("View all", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
+              InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const AllStores(title: "Most popular")));
+                  },
+                  child: const Text("View all", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
             ],
           ),
           const SizedBox(height: 30),
