@@ -77,11 +77,19 @@ class _StoreProductsState extends State<StoreProducts> {
               children: <Widget>[
                 Expanded(
                   child: Container(
+                    width: 100,
                     padding: const EdgeInsets.all(4),
                     alignment: Alignment.topRight,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+                    decoration: BoxDecoration(image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg")), borderRadius: BorderRadius.circular(5)),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: brown),
+                      child: const Text("12.99", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: white)),
+                    ),
                   ),
                 ),
+                const SizedBox(height: 10),
+                const Text("Margherita Pizza Tasty Bites", textAlign: TextAlign.center, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: brown)),
               ],
             ),
           ),
