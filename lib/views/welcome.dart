@@ -24,7 +24,7 @@ class _WelcomeState extends State<Welcome> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text("Welcome", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500, color: settings["main_color"])),
+              Text("Welcome", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: settings["main_color"])),
               const SizedBox(height: 30),
               Flexible(
                 child: Text(
@@ -33,12 +33,13 @@ class _WelcomeState extends State<Welcome> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 30),
+              const Spacer(),
               GestureDetector(
                 onTap: () {
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const Holder()));
                 },
                 child: Container(
+                  width: MediaQuery.sizeOf(context).width,
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
                   decoration: BoxDecoration(color: brown, borderRadius: BorderRadius.circular(15)),
                   child: const Text("OK", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: white)),
