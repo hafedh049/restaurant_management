@@ -28,26 +28,26 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               IconButton(
                 onPressed: () {},
-                icon: const Icon(Bootstrap.pin_map, size: 15),
+                icon: const Icon(Bootstrap.pin_map, size: 25, color: brown),
               ),
               const Spacer(),
               GestureDetector(
                 onTap: () {},
-                child: const Text("Add address", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                child: const Text("Add address", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: brown)),
               ),
               const Spacer(),
               Tooltip(
                 message: "Delivery",
                 child: IconButton(
                   onPressed: () {},
-                  icon: const Icon(FontAwesome.truck_pickup_solid, size: 15),
+                  icon: Image.asset("assets/pictures/delivery.png", height: 25, width: 25, color: brown),
                 ),
               ),
               Tooltip(
                 message: "Pickup",
                 child: IconButton(
                   onPressed: () {},
-                  icon: const Icon(FontAwesome.pizza_slice_solid, size: 15),
+                  icon: Image.asset("assets/pictures/pickup.png", height: 40, width: 40, color: brown),
                 ),
               ),
             ],

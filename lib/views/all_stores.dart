@@ -17,6 +17,7 @@ class _AllStoresState extends State<AllStores> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: transparent,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: const Icon(Bootstrap.chevron_left, size: 15, color: brown),
@@ -31,6 +32,7 @@ class _AllStoresState extends State<AllStores> {
               icon: const Icon(Bootstrap.shop, size: 15),
             ),
           ),
+          const SizedBox(width: 10),
         ],
       ),
       body: Padding(
