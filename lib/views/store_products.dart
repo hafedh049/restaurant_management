@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:restaurant_management/utils/globals.dart';
 
@@ -78,7 +79,7 @@ class _StoreProductsState extends State<StoreProducts> {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: 20,
-            separatorBuilder: (context, index) => const SizedBox(width: 20),
+            separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 20),
             itemBuilder: (BuildContext context, int index) => Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -121,16 +122,51 @@ class _StoreProductsState extends State<StoreProducts> {
         StatefulBuilder(
           builder: (BuildContext context, void Function(void Function()) _) {
             return Row(
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                for(final Map<String,dynamic> item in _filters)
-                Container(
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:_filter == item["text"] ?, ),
-                  padding: const EdgeInsets.all(4),
-                  margin: const EdgeInsets.only(right: 20),
-                ),
+                for (final Map<String, dynamic> item in _filters)
+                  GestureDetector(
+                    onTap: () {
+                      _(() => _filter = item["text"]);
+                    },
+                    child: AnimatedContainer(
+                      duration: 500.ms,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: _filter == item["text"] ? brown : brown.withOpacity(.1),
+                      ),
+                      padding: const EdgeInsets.all(8),
+                      margin: const EdgeInsets.only(right: 20),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          if (item["icon"] != null) ...<Widget>[
+                            Image.asset(item["icon"], width: 20, height: 20, fit: BoxFit.cover),
+                            const SizedBox(width: 10),
+                          ],
+                          Text(item["text"], style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: _filter != item["text"] ? brown : brown.withOpacity(.1))),
+                        ],
+                      ),
+                    ),
+                  ),
               ],
             );
           },
+        ),
+        const SizedBox(height: 30),
+        Expanded(
+          child: ListView.separated(
+            itemCount: 20,
+            separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 20),
+            itemBuilder: (BuildContext context, int index) => AnimatedContainer(
+              duration: 500.ms,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(),
+              child: Row(
+                children: <Widget>[],
+              ),
+            ),
+          ),
         ),
       ],
     );
