@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -177,8 +179,14 @@ class _StoreProductsState extends State<StoreProducts> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[],
+                    children: <Widget>[
+                      const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: white)),
+                      const SizedBox(height: 10),
+                      Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
+                    ],
                   ),
+                  const Spacer(),
+                  Text("${Random().nextInt(90) + 10}.00", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: brown)),
                 ],
               ),
             ),
