@@ -15,7 +15,50 @@ class ProductCategory extends StatefulWidget {
 
 class _ProductCategoryState extends State<ProductCategory> {
   void _openSearch() {
-    showModalBottomSheet(context: context, builder: (BuildContext context ) => ,);
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) => Container(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            TextField(
+              readOnly: true,
+              style: const TextStyle(color: brown),
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Bootstrap.search, size: 15, color: brown),
+                contentPadding: const EdgeInsets.all(8),
+                hintStyle: const TextStyle(color: brown, fontSize: 16, fontWeight: FontWeight.w300),
+                hintText: "Search for stores or products",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5),
+                  borderSide: const BorderSide(width: 1, color: brown),
+                ),
+              ),
+            ),
+            const SizedBox(height: 30),
+            Row(
+              children: <Widget>[
+                const Spacer(),
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Bootstrap.list_ul, size: 15, color: brown),
+                ),
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Bootstrap.grid_3x3_gap_fill, size: 15, color: brown),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
