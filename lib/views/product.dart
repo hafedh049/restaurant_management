@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:restaurant_management/views/empty_cart.dart';
+import 'package:restaurant_management/views/orders_login.dart';
 
 import '../utils/globals.dart';
 
@@ -75,7 +75,7 @@ class _ProductState extends State<Product> {
               children: <Widget>[
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const EmptyCart()));
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const OrdersLogin()));
                   },
                   child: Container(
                     padding: const EdgeInsets.all(8),
@@ -87,7 +87,7 @@ class _ProductState extends State<Product> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const EmptyCart()));
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const OrdersLogin()));
                     },
                     child: Container(
                       padding: const EdgeInsets.all(8),

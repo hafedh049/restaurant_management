@@ -199,20 +199,25 @@ class _HomeState extends State<Home> {
                   itemBuilder: (BuildContext context, int index) => Row(
                     children: <Widget>[
                       for (final int _ in pieces[index]) ...<Widget>[
-                        Container(
-                          height: 300,
-                          width: (MediaQuery.sizeOf(context).width - 48) / 2 - 20,
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              const Spacer(),
-                              const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: white)),
-                              const SizedBox(height: 10),
-                              Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
-                            ],
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const StoreHolder()));
+                          },
+                          child: Container(
+                            height: 300,
+                            width: (MediaQuery.sizeOf(context).width - 48) / 2 - 20,
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: const DecorationImage(image: AssetImage("assets/pictures/5.jpg"), fit: BoxFit.cover)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                const Spacer(),
+                                const Text("Tasty Bites", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: white)),
+                                const SizedBox(height: 10),
+                                Text("✭" * (Random().nextInt(5) + 1), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow)),
+                              ],
+                            ),
                           ),
                         ),
                         if (_ != pieces[index].last) const SizedBox(width: 10)
